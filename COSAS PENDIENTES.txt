@@ -1,0 +1,8 @@
+
+- En la función de dar likes le estas añadiendo el like al usuario que esta dando el like,
+  en vez de añadirselo al usuario que ha creado la experiencia
+- Si cambias de usuario, las experiencias que ha creado el otro usuario se cree que son del nuevo
+- No se mantienen los likes de las experiencias (si doy like una cosa y recargo no sale que le haya dado like) (esta si es muy complicada podriamos omitirla)
+
+- Al editar el perfil, si cambiamos el correo del usuario, cambiar también el usuario en las experiencias
+

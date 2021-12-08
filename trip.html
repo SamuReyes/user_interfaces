@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- Responsive meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Travel Experience</title>
+    <!-- Fontawesome css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- Bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <!-- Personal css -->
+    <link href="style/styles.css" rel="stylesheet" type="text/css" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/light_logo.png" />
+
+<body>
+    <!-- LOG-IN POP UP  -->
+    <div class="popup popup-login bg-dark">
+        <div class="close" id="close-login">
+            <i class="fa fa-times"></i>
+        </div>
+        <form id="login-form" name="login-form" method="post">
+            <div class="form">
+                <h3 class="text-center">Log in</h3>
+                <div class="form-row">
+                    <label for="username-email">Email</label>
+                    <input type="text" name="email" id="username-email" placeholder="Enter email">
+                </div>
+                <div class="form-row">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Enter password">
+                </div>
+                <p id="invalid-login">Incorrect email or password!</p>
+                <div class="form-row">
+                    <button type="button" class="btn btn-outline-primary" id="request-login">
+                        Log In
+                    </button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <!-- SIGN-UP POP UP  -->
+    <div class="popup popup-signup bg-dark">
+        <div class="close" id="close-signup">
+            <i class="fa fa-times"></i>
+        </div>
+        <form id="signup-form" name="signup-form">
+            <div class="form">
+                <h3 class="text-center">Sign up</h3>
+                <div class="form-row">
+                    <label for="user-name">Username <p class="required">*</p></label>
+                    <input type="text" name="username" id="user-name" placeholder="Enter username">
+                </div>
+                <div class="form-row">
+                    <label for="password">Password <p class="required">*</p></label>
+                    <input type="password" name="password" id="pass-word" placeholder="Enter password">
+                </div>
+                <div class="form-row">
+                    <label for="email">Email <p class="required">*</p></label>
+                    <input type="text" name="email" id="email" placeholder="name@domain.extension">
+                </div>
+                <div class="form-row">
+                    <label for="profile-img">Profile image</label>
+                    <label class="file-upload">
+                        <input type="file" name="profile-img" id="profile-img">
+                        Upload your image
+                    </label>
+                </div>
+                <div id="terms-div">
+                    <label for="check" id="terms-text">I have read and accepted the Terms of Use <p class="required">*</p></label>
+                    <input type="checkbox" name="check" id="terms-checkbox">
+                </div>
+                <div class="form-row-btn">
+                    <div>
+                        <button class="btn btn-outline-primary" id="save-btn">
+                        Sign up
+                        </button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-outline-danger" id="delete-btn">
+                        Clear form
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+	
+	<!-- EDIT EXPERIENCE POP UP -->
+    <div class="popup popup-editexperience bg-dark">
+        <div class="close" id="close-editexperience">
+            <i class="fa fa-times"></i>
+        </div>
+        <h2>EDIT THE EXPERIENCE</h2>
+        <form id="edit-experiences-form" name="edit-experiences-form">
+            <div class="form-row">
+                <label class="form-label" for="title">Title</label>
+                <input type="text" name="title" id="edit-experience-title" placeholder="Enter the name of the experience" readonly>
+            </div>
+            <div class="form-row">
+                <label class="form-label" for="text">Description</label>
+                <textarea rows="3" name="text" id="edit-experience-text" placeholder="Write a description for the experience"></textarea>
+            </div>
+            <div class="form-row">
+                <label class="form-label" for="experience-budget">Budget</label>
+                <select class="form-select" id="edit-experience-budget">
+                    <option>Low (0 - 500€)</option>
+                    <option>Medium (500€ - 900€)</option>
+                    <option>High (900€ - 2000€)</option>
+                </select>
+            </div>
+            <div class="form-row container">
+                <div class="row align-items-start">
+                    <label class="form-label">Tags</label>
+                    <div class="col-6">
+                        <input class="form-check-input" type="checkbox" value="" id="edit-cultural-tag">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Cultural
+                        </label>
+                    </div>
+                    <div class="col-6">
+                        <input class="form-check-input" type="checkbox" value="" id="edit-historical-tag">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Historical
+                        </label>
+                    </div>
+                </div>
+                <div class="row align-items-start">
+                    <div class="col-6">
+                        <input class="form-check-input" type="checkbox" value="" id="edit-beach-tag">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Beach
+                        </label>
+                    </div>
+                    <div class="col-6">
+                        <input class="form-check-input" type="checkbox" value="" id="edit-mountain-tag">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Mountain
+                        </label>
+                    </div>
+                </div>
+                <div class="row align-items-start">
+                    <div class="col-6">
+                        <input class="form-check-input" type="checkbox" value="" id="edit-rural-tag">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Rural
+                        </label>
+                    </div>
+                    <div class="col-6">
+                        <input class="form-check-input" type="checkbox" value="" id="edit-business-tag">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Business
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <label class="form-label" for="leavingfrom">Leaving from</label>
+                <input type="text" name="leavingfrom" id="edit-experience-leavingfrom" placeholder="Destination you are leaving from">
+            </div>
+            <div class="form-row">
+                <label class="form-label" for="profile-img">Images</label>
+                <label class="file-upload">
+                    <input type="file" multiple="true" name="experience-img" id="edit-experience-img">
+                    Upload images for the experiences
+                </label>
+            </div>
+            <div class="form-row">
+                <label class="form-label" for="experience-collection">Collection</label>
+                <input type="text" name="experience-collection" id="edit-experience-collection" placeholder="Write the name of the collection">
+            </div>
+            <div class="form-row">
+                <label class="form-label" for="experience-collaborator">Collaborator</label>
+                <input type="text" name="experience-collaborator" id="edit-experience-collaborator" placeholder="Write the name of the collaborator">
+            </div>
+            <div class="form-row-btn">
+                <button class="btn btn-outline-primary" id="edit-experience" type="button" onclick='updateExp()'>Update</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- PROFILE POP UP  -->
+    <div class="popup popup-profile bg-dark">
+        <div class="close" id="close-profile">
+            <i class="fa fa-times"></i>
+        </div>
+        <form id="profile-form" name="profile-form">
+            <div class="form">
+                <h3>MY PROFILE</h3>
+                <div class="form-row">
+                    <label for="user-name">Username</label>
+                    <input type="text" name="username" id="profile-username">
+                </div>
+                <div class="form-row">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="profile-email" readonly>
+                </div>
+                <div class="form-row">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="profile-password">
+                </div>
+                <div class="form-row">
+                    <label for="profile-img">Profile image</label>
+                    <label class="file-upload">
+                        <input type="file" name="profile-picture" id="profile-picture">
+                        Upload a new image
+                    </label>
+                </div>
+                <div class="form-row-btn">
+                    <div>
+                        <button class="btn btn-outline-primary" id="update-btn" type="button">Update</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+	
+	<!-- Experience pop up -->
+    <div class="popup popup-exp bg-dark">
+        <div class="close" id="close-exp">
+            <i class="fa fa-times" onclick='closeexpF()'></i>
+        </div>
+        <form id="exp-form" name="exp-form">
+        </form>
+		<div class="chat-container commentsexp">
+            <ul class="chat-box chatContainerScroll">
+                <li class="chat-right">
+                    <div class="chat-hour">19:31 </div>
+                    <div class="chat-text">Great city!
+                        <p class="reply-comment">
+                            Reply
+                        </p>
+                    </div>
+                    <div class="chat-avatar">
+                        <img src="images/profile_img.png" alt="profile_pic">
+                    </div>
+                </li>
+                <li class="chat-right">
+                    <div class="chat-hour">19:33 </div>
+                    <div class="chat-text">I love that place!
+                        <p class="reply-comment">
+                            Reply
+                        </p>
+                    </div>
+                    <div class="chat-avatar">
+                        <img src="images/profile_img.png" alt="profile_pic">
+                    </div>
+                </li>
+                <li class="chat-right">
+                    <div class="chat-hour">19:38 </div>
+                    <div class="chat-text">My wife and I enjoyed a lot this experience
+                        <p class="reply-comment">
+                            Reply
+                        </p>
+                    </div>
+                    <div class="chat-avatar">
+                        <img src="images/profile_img.png" alt="profile_pic">
+                    </div>
+                </li>
+                <li class="chat-right">
+                    <div class="chat-hour">19:50 </div>
+                    <div class="chat-text">Great place!
+                        <p class="reply-comment">
+                            Reply
+                        </p>
+                    </div>
+                    <div class="chat-avatar">
+                        <img src="images/profile_img.png" alt="profile_pic">
+                    </div>
+                </li>
+                <li class="chat-right">
+                    <div class="chat-hour">20:35 </div>
+                    <div class="chat-text">My dream trip
+                        <p class="reply-comment">
+                            Reply
+                        </p>
+                    </div>
+                    <div class="chat-avatar">
+                        <img src="images/profile_img.png" alt="profile_pic">
+                    </div>
+                </li>
+            </ul>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Add a comment">
+                <div class="send-button">
+                    <span class="input-group-text" type="button"><i class="fa fa-send"></i></span>
+                </div>                   
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.svg" alt="Travel Experience Logo" height="55" class="d-inline-block align-text-top" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav ms-md-auto">
+                    <li class="nav-item">
+                        <a class="nav-link fs-5 mx-4" href="experiences.html">Experiences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5 mx-4" href="trip.html">Trip planning</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5 mx-4" href="users.html">Users</a>
+                    </li>
+                    <li class="nav-item user-mobile-nav">
+                        <a class="nav-link fs-5 mx-4" type="button" id="open-profile-mb">My profile</a>
+                    </li>
+                    <li class="nav-item user-mobile-nav">
+                        <a class="nav-link fs-5 mx-4" href="myexperiences.html" id="open-myexperiences-mb" >My experiences</a>
+                    </li>
+                    <li class="nav-item user-mobile-nav">
+                        <a class="nav-link fs-5 mx-4" href="chat.html" id="open-chat-mb">Chat</a>
+                    </li>
+                    <li class="nav-item user-mobile-nav">
+                        <a class="nav-link fs-5 mx-4" href="" id="logout-mb">Log out</a>
+                    </li>
+                </ul>
+                <!-- LOG-IN -->
+                <div id="guest" class="nav-buttons d-flex ms-md-auto justify-content-end">
+                    <button type="button" class="btn btn-outline-primary fs-5" id="login-button">
+                        Log In
+                    </button>
+                    <button type="button" class="btn btn-outline-primary fs-5" id="signup-button">
+                        Sign Up
+                    </button>
+                </div>
+                <!-- USER -->
+                <div id="user-area" class="dropdown text-end ms-md-auto flex-row-reverse">
+                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="" id="profile-img-icon" class="rounded-circle" height="40px">
+                            <p id="profile-names"></p><i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </a>
+                    <ul class="dropdown-menu text-small bg-dark" aria-labelledby="dropdownUser1" style="">
+                        <li id="open-profile"><a class="dropdown-item" type="button">My profile</a></li>
+                        <li id="open-myexperiences"><a class="dropdown-item" href="myexperiences.html" >My experiences</a></li>
+                        <li id="open-chat"><a class="dropdown-item" href="chat.html">Chat</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li id="logout"><a class="dropdown-item  text-danger" href="">Log out</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <header>
+        <!-- Search  -->
+		<div class="container header-trip">
+                    <a href="index.html"><i class="fa fa-arrow-circle-left fa-3x colorblue"></i></a>
+                    <div class="header-cards2 card text-center p-3 card-body margins">
+                            <h5 class="card-title fbold">PLAN A TRIP</h5>
+							<div class="alignleft">
+							<label class="form-label">Budget </label>
+							<select id="budget" class="form-select" aria-label="Default select example">
+							  <option selected>All</option>
+							  <option value="Low (200$-500$)">Low (200$-500$)</option>
+							  <option value="Medium (500€ - 900€)">Medium (500€ - 900€)</option>
+							  <option value="High (900€ - 2000€)">High (900€ - 2000€)</option>
+							</select>							
+							<label class="form-label">Interests </label>
+							<select id="interest" class="form-select" aria-label="Default select example">
+							  <option selected>All</option>
+							  <option value="cultural">Cultural</option>
+							  <option value="historical">Historical</option>
+							  <option value="beach">Beach</option>
+							  <option value="mountain">Mountain</option>
+							  <option value="rural">Rural</option>
+							  <option value="business">Business</option>
+							</select>
+							<label for="formGroupExampleInput" class="form-label">Leaving from </label>
+							<input type="text" class="form-control" id="leavingfrom">
+							<br></div>
+                            <button type="button" class="btn btn-outline-primary" id="findtrip-button" onclick="searchTripF()">
+							Find a trip
+							</button>
+                        
+                    </div>
+        </div>
+		<!-- Experiences -->
+		<div class=" bgblue">
+            <!-- experiences card -->
+            <div id='principal' class="row margins">
+                                <div class="col-12 col-lg-4 card-item">
+                    <div class="header-cards2 card text-center p-3 experience">
+                        <div class="card-body">
+							<img src="images/paris.png" alt="Paris" class="d-inline-block align-text-top img-fluid" />
+                            <h5 class="card-title fbold margint name">Paris</h5>
+							<div class="moreinfo"><p> Paris' monument-lined boulevards, museums, classical bistros and boutiques are enhanced by a new wave of multimedia galleries, creative wine bars, design shops and tech start-ups. </p>
+							<p class='budget'>Budget: Low (0 - 500€)</p><p class='interest'>Interests: Beach Business</p><p class='leavingfrom'>Leaving from: Spain</p></div>
+							<a class="card-text readmore" onclick="expandF()">Read more</a>
+							<p>
+							<i id="1" class="fa fa-heart-o emptyheart" onclick="likesF()"></i>
+							<i class="fa fa-heart fullheart" style='display: none; color: red' onclick="unlikesF()"></i><i class='likes'>10</i>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="fa fa-comment-o" onclick="commentsF()"></i>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="fa fa-share-alt" onclick="shareF()"></i></p>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-4 card-item">
+                    <div class="header-cards2 card text-center p-3 experience">
+                        <div class="card-body">
+							<img src="images/athens.png" alt="Athens" class="d-inline-block align-text-top img-fluid" />	                            
+							<h5 class="card-title fbold margint name">Athens</h5>
+							<div class="moreinfo"><p> With equal measures of grunge and grace, Athens is a heady mix of ancient history and contemporary cool. </p><p class='budget'>Budget: Medium (500€ - 900€)</p><p class='interest'>Interests: Beach Business</p><p class='leavingfrom'>Leaving from: Spain</p></div>
+							<a class="card-text readmore" onclick="expandF()">Read more</a>
+							<p>
+							<i id="2" class="fa fa-heart-o emptyheart" onclick="likesF()"></i>
+							<i class="fa fa-heart fullheart" style='display: none; color: red' onclick="unlikesF()"></i><i class='likes'>22</i>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="fa fa-comment-o" onclick="commentsF()"></i>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="fa fa-share-alt" onclick="shareF()"></i></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-4 card-item">
+                    <div class="header-cards2 card text-center p-3 experience">
+                        <div class="card-body">
+							<img src="images/toronto.png" alt="Toronto" class="d-inline-block align-text-top img-fluid" />	                          
+							<h5 class="card-title fbold margint name">Toronto</h5>
+							<div class="moreinfo"><p> Art, food, beaches, nightlife – in Toronto, you’ve got it all. </p><p class='budget'>Budget: Low (200$-500$)</p><p class='interest'>Interests: Beach Business</p><p class='leavingfrom'>Leaving from: EEUU</p></div>
+							<a class="card-text readmore" onclick="expandF()">Read more</a>
+							<p>
+							<i id="3" class="fa fa-heart-o emptyheart" onclick="likesF()"></i>
+							<i class="fa fa-heart fullheart" style='display: none; color: red' onclick="unlikesF()"></i><i class='likes'>10</i>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="fa fa-comment-o" onclick="commentsF()"></i>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="fa fa-share-alt" onclick="shareF()"></i></p>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="col-12 col-lg-4 card-item">
+                    <div class="header-cards2 card text-center p-3 experience">
+                        <div class="card-body">
+							<img src="images/san_francisco.png" alt="SanFrancisco" class="d-inline-block align-text-top img-fluid" />	                          
+							<h5 class="card-title fbold margint name">San Francisco</h5>
+							<div class="moreinfo"><p> Grab your coat and a handful of glitter, and enter a wonderland of fog and fabulousness. So long, inhibitions; hello, San Francisco! </p><p class='budget'>Budget: Low (200$-500$)</p><p class='interest'>Interests: Beach Business</p><p class='leavingfrom'>Leaving from: Spain</p></div>
+							<a class="card-text readmore" onclick="expandF()">Read more</a>
+							<p>
+							<i id="3" class="fa fa-heart-o emptyheart" onclick="likesF()"></i>
+							<i class="fa fa-heart fullheart" style='display: none; color: red' onclick="unlikesF()"></i><i class='likes'>26</i>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="fa fa-comment-o" onclick="commentsF()"></i>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="fa fa-share-alt" onclick="shareF()"></i></p>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="col-12 col-lg-4 card-item">
+                    <div class="header-cards2 card text-center p-3 experience">
+                        <div class="card-body">
+							<img src="images/tokyo.png" alt="Tokyo" class="d-inline-block align-text-top img-fluid" />	                          
+							<h5 class="card-title fbold margint name">Tokyo</h5>
+							<div class="moreinfo"><p> Yoking past and future, Tokyo dazzles with its traditional culture and passion for everything new.</p><p class='budget'>Budget: Low (200$-500$)</p><p class='interest'>Interests: Beach Business</p><p class='leavingfrom'>Leaving from: Germany</p></div>
+							<a class="card-text readmore" onclick="expandF()">Read more</a>
+							<p>
+							<i id="3" class="fa fa-heart-o emptyheart" onclick="likesF()"></i>
+							<i class="fa fa-heart fullheart" style='display: none; color: red' onclick="unlikesF()"></i><i class='likes'>50</i>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="fa fa-comment-o" onclick="commentsF()"></i>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="fa fa-share-alt" onclick="shareF()"></i></p>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="col-12 col-lg-4 card-item">
+                    <div class="header-cards2 card text-center p-3 experience">
+                        <div class="card-body">
+							<img src="images/sao_paulo.png" alt="SaoPaulo" class="d-inline-block align-text-top img-fluid" />	                          
+							<h5 class="card-title fbold margint name">Sao Paulo</h5>
+							<div class="moreinfo"><p> São Paulo is home to 20 million fiercely proud paulistanos (as residents are known), all of whom will happily tell you at length to you how they'd never live elsewhere. </p><p class='budget'>Budget: Low (200$-500$)</p><p class='interest'>Interests: Beach Business</p><p class='leavingfrom'>Leaving from: Spain</p></div>
+							<a class="card-text readmore" onclick="expandF()">Read more</a>
+							<p>
+							<i id="3" class="fa fa-heart-o emptyheart" onclick="likesF()"></i>
+							<i class="fa fa-heart fullheart" style='display: none; color: red' onclick="unlikesF()"></i><i class='likes'>10</i>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="fa fa-comment-o" onclick="commentsF()"></i>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="fa fa-share-alt" onclick="shareF()"></i></p>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="col-12 col-lg-4 card-item">
+                    <div class="header-cards2 card text-center p-3 experience">
+                        <div class="card-body">
+							<img src="images/pyramids.png" alt="Egypt" class="d-inline-block align-text-top img-fluid" />	                          
+							<h5 class="card-title fbold margint name">Egypt</h5>
+							<div class="moreinfo"><p> The last remaining wonder of the ancient world; for nearly 4000 years, the extraordinary shape, impeccable geometry and sheer bulk of the Giza Pyramids have invited the obvious questions: ‘How were they built, and why?’. </p><p class='budget'>Budget: Low (200$-500$)</p><p class='interest'>Interests: Beach Business</p><p class='leavingfrom'>Leaving from: Greece</p></div>
+							<a class="card-text readmore" onclick="expandF()">Read more</a>
+							<p>
+							<i id="3" class="fa fa-heart-o emptyheart" onclick="likesF()"></i>
+							<i class="fa fa-heart fullheart" style='display: none; color: red' onclick="unlikesF()"></i><i class='likes'>80</i>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="fa fa-comment-o" onclick="commentsF()"></i>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="fa fa-share-alt" onclick="shareF()"></i></p>
+                        </div>
+                    </div>
+                </div>
+				<div class="col-12 col-lg-4 card-item">
+                    <div class="header-cards2 card text-center p-3 experience">
+                        <div class="card-body">
+							<img src="images/barcelona.png" alt="Barcelona" class="d-inline-block align-text-top img-fluid" />	                          
+							<h5 class="card-title fbold margint name">Barcelona</h5>
+							<div class="moreinfo"><p> Barcelona is an enchanting seaside city with boundless culture, fabled architecture and a world-class drinking and dining scene. </p><p class='budget'>Budget: Low (200$-500$)</p><p class='interest'>Interests: Beach Business</p><p class='leavingfrom'>Leaving from: Spain</p></div>
+							<a class="card-text readmore" onclick="expandF()">Read more</a>
+							<p>
+							<i id="3" class="fa fa-heart-o emptyheart" onclick="likesF()"></i>
+							<i class="fa fa-heart fullheart" style='display: none; color: red' onclick="unlikesF()"></i><i class='likes'>10</i>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="fa fa-comment-o" onclick="commentsF()"></i>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="fa fa-share-alt" onclick="shareF()"></i></p>
+                        </div>
+                    </div>
+                </div>
+				<div class="col-12 col-lg-4 card-item">
+                    <div class="header-cards2 card text-center p-3 experience">
+                        <div class="card-body">
+							<img src="images/sydney.png" alt="Sydney" class="d-inline-block align-text-top img-fluid" />	                          
+							<h5 class="card-title fbold margint name">Sydney</h5>
+							<div class="moreinfo"><p> Sydney, spectacularly draped around its glorious harbour and beaches, has visual wow factor like few other cities. Scratch the surface and it only gets better. </p><p class='budget'>Budget: Low (200$-500$)</p><p class='interest'>Interests: Beach Business</p><p class='leavingfrom'>Leaving from: Spain</p></div>
+							<a class="card-text readmore" onclick="expandF()">Read more</a>
+							<p>
+							<i id="3" class="fa fa-heart-o emptyheart" onclick="likesF()"></i>
+							<i class="fa fa-heart fullheart" style='display: none; color: red' onclick="unlikesF()"></i><i class='likes'>23</i>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="fa fa-comment-o" onclick="commentsF()"></i>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<i class="fa fa-share-alt" onclick="shareF()"></i></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4">
+
+            <!-- Section: Social media -->
+            <section class="mb-5 mt-3">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa fa-facebook-f"></i></a>
+                <!-- Twitter -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa fa-twitter"></i></a>
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa fa-instagram"></i></a>
+            </section>
+
+            <!-- Section: Form -->
+            <section class="">
+                <form action="">
+                    <!--Grid row-->
+                    <div class="row d-flex justify-content-center">
+                        <!--Grid column-->
+                        <div class="col-12 col-lg-auto">
+                            <p class="pt-2 fs-5">
+                                <strong>Sign up for our newsletter</strong>
+                            </p>
+                        </div>
+                        <!--Grid column-->
+                        <div class="col-8 col-lg-auto">
+                            <!-- Email input -->
+                            <div class="form-outline form-white mb-4">
+                                <input type="email" id="newsletter-form" class="form-control fs-5" placeholder="Email address"/>
+                                <label class="form-label" for="newsletter-form" ></label>
+                            </div>
+                        </div>
+                        <!--Grid column-->
+                        <div class="col-4 col-lg-auto">
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-outline-primary mb-4 fs-5">
+                                Subscribe
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        
+            <!-- Section: Links -->
+            <section class="fs-5">
+                <!--Grid row-->
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-4 mb-4 mb-md-0">
+                        <ul class="footer-links list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white">FAQS</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white">Copyright</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-4 mb-4 mb-md-0">
+                        <img src="images/logo.svg" width="97rem">
+                    </div>
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-4 mb-4 mb-md-0">
+                        <ul class="footer-links list-unstyled mb-0">
+                            <li>
+                                <a href="experiences.html" class="text-white">Experiences</a>
+                            </li>
+                            <li>
+                                <a href="trip.html" class="text-white">Trip Planning</a>
+                            </li>
+                            <li>
+                                <a href="users.html" class="text-white">Users</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Copyright -->
+        <div class="text-center p-3 black-background-copyright">
+            © 2021 Copyright:
+            <a class="text-white" href="index.html">Travel Experience</a>
+        </div>
+    </footer>
+    
+    <!-- JQuery  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- JQuery validation  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- JQuery cookies  -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <!-- Bootstrap javascript  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!-- Personal script  -->
+    <script type="text/javascript" src="script/scripts.js"></script>
+</body>
+
+</html>
