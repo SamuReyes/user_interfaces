@@ -455,27 +455,27 @@ $(document).ready(function() {
 			var intt = document.createTextNode('Interests: ');
 			interests.appendChild(intt);
 
-			if (cultural){
+			if (cultural == 'true'){
 			var intt = document.createTextNode('Cultural ');
 			interests.appendChild(intt);
 			}
-			if (historical){
+			if (historical == 'true'){
 			var intt = document.createTextNode('Historical ');
 			interests.appendChild(intt);
 			}
-			if (beach){
+			if (beach == 'true'){
 			var intt = document.createTextNode('Beach ');
 			interests.appendChild(intt);
 			}
-			if (mountain){
+			if (mountain == 'true'){
 			var intt = document.createTextNode('Mountain ');
 			interests.appendChild(intt);
 			}
-			if (rural){
+			if (rural == 'true'){
 			var intt = document.createTextNode('Rural ');
 			interests.appendChild(intt);
 			}
-			if (business){
+			if (business == 'true'){
 			var intt = document.createTextNode('Business');
 			interests.appendChild(intt);
 			}
@@ -826,6 +826,11 @@ function searchF(){
 	var input = document.getElementById("searchexp").value.toLowerCase();
 	var grids = document.getElementsByClassName("card-item");
 	var counter = 0;
+	
+	//We hide de alert  (if it is displayed)
+	var alertdiv = document.getElementsByClassName('alert-danger');
+	alertdiv[0].style.display = 'none';
+	
 	if (filter == 'All'){
 	for (i=0; i < grids.length; i++){
 		var txt = grids[i].textContent || grids[i].innerText;
@@ -850,11 +855,15 @@ function searchF(){
 					counter++
 	}}}
 	if (counter == grids.length){
-		for (i=0; i < grids.length; i++){ //Display all the blocks
-			grids[i].style.display = "block";
-		}
+	    var alertdiv = document.getElementsByClassName('alert-danger');
+	    alertdiv[0].style.display = 'block';
 	}
 };
+
+function closealertF(){
+	var alertdiv = document.getElementsByClassName('alert-danger');
+	alertdiv[0].style.display= 'none';
+}
 
 function expandF(){
 	var actual = event.srcElement;
@@ -1048,6 +1057,9 @@ function searchTripF(){
 	var leavingfrom = document.getElementById("leavingfrom").value.toLowerCase();
 	var grids = document.getElementsByClassName("card-item");
 	var counter = 0;
+	//We hide de alert  (if it is displayed)
+	var alertdiv = document.getElementsByClassName('alert-danger');
+	alertdiv[0].style.display = 'none';
 	//Display all the experiences
 	for (i=0; i < grids.length; i++){
         grids[i].style.display = "block";
@@ -1058,29 +1070,29 @@ function searchTripF(){
 		for (i=0; i < grids.length; i++){
 		if (!filter_elem[i].innerHTML.includes(budget)) {
                     grids[i].style.display = "none";
-					counter++
+					counter++;
 	}}}
 	//After the budget filter, we display (taking only the resulting experiences from the first filter) only the experiences with that specific interest 
 	if (interest != 'All'){
 		var filter_elem = document.getElementsByClassName('interest');
 		for (i=0; i < grids.length; i++){
-		if (!filter_elem[i].innerHTML.includes(interest)) {
+		if ((!filter_elem[i].innerHTML.toLowerCase().includes(interest))&& (grids[i].style.display == "block")) {
                     grids[i].style.display = "none";
-					counter++
+					counter++;
 	}}}
 	//Filter from leaving from
 	if (leavingfrom != ''){
 		var filter_elem = document.getElementsByClassName('leavingfrom');
 		for (i=0; i < grids.length; i++){
-		if (!filter_elem[i].innerHTML.toLowerCase().includes(leavingfrom)) {
+		if ((!filter_elem[i].innerHTML.toLowerCase().includes(leavingfrom))&& (grids[i].style.display == "block")) {
                     grids[i].style.display = "none";
-					counter++
+					counter++;
 	}}}
+
 	//If any experience matches with the filters, we display all the experiences and an alerts saying that there wasm`t any coincidence
 	if (counter == grids.length){
-		for (i=0; i < grids.length; i++){ //Display all the blocks
-			grids[i].style.display = "block";
-		}
+	    var alertdiv = document.getElementsByClassName('alert-danger');
+	    alertdiv[0].style.display = 'block';
 	}
 };
 

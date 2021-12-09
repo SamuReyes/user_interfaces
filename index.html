@@ -56,7 +56,7 @@
                     <input type="text" name="username" id="user-name" placeholder="Enter username">
                 </div>
                 <div class="form-row">
-                    <label for="password">Password <p class="required">*</p></label>
+                    <label for="pass-word">Password <p class="required">*</p></label>
                     <input type="password" name="password" id="pass-word" placeholder="Enter password">
                 </div>
                 <div class="form-row">
@@ -71,7 +71,7 @@
                     </label>
                 </div>
                 <div id="terms-div">
-                    <label for="check" id="terms-text">I have read and accepted the Terms of Use <p class="required">*</p></label>
+                    <label for="terms-checkbox" id="terms-text">I have read and accepted the Terms of Use <p class="required">*</p></label>
                     <input type="checkbox" name="check" id="terms-checkbox">
                 </div>
                 <div class="form-row-btn">
@@ -99,19 +99,19 @@
             <div class="form">
                 <h3>MY PROFILE</h3>
                 <div class="form-row">
-                    <label for="user-name">Username</label>
+                    <label for="profile-username">Username</label>
                     <input type="text" name="username" id="profile-username">
                 </div>
                 <div class="form-row">
-                    <label for="email">Email</label>
+                    <label for="profile-email">Email</label>
                     <input type="text" name="email" id="profile-email" readonly>
                 </div>
                 <div class="form-row">
-                    <label for="password">Password</label>
+                    <label for="profile-password">Password</label>
                     <input type="password" name="password" id="profile-password">
                 </div>
                 <div class="form-row">
-                    <label for="profile-img">Profile image</label>
+                    <label for="profile-picture">Profile image</label>
                     <label class="file-upload">
                         <input type="file" name="profile-picture" id="profile-picture">
                         Upload a new image
@@ -133,7 +133,7 @@
                 <img src="images/logo.svg" alt="Travel Experience Logo" height="55" class="d-inline-block align-text-top" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span><p class="d-none">Open menu</p>
             </button>
             <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="navbar-nav ms-md-auto">
@@ -171,7 +171,7 @@
                 <!-- USER -->
                 <div id="user-area" class="dropdown text-end ms-md-auto flex-row-reverse">
                     <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="" id="profile-img-icon" class="rounded-circle" height="40px">
+                            <img src="" id="profile-img-icon" alt="Profile icon" class="rounded-circle" height="40px">
                             <p id="profile-names"></p><i class="fa fa-caret-down" aria-hidden="true"></i>
                     </a>
                     <ul class="dropdown-menu text-small bg-dark" aria-labelledby="dropdownUser1" style="">
@@ -198,7 +198,7 @@
                         <div class="card-body">
                             <h5 class="card-title">EXPERIENCES</h5>
                             <p class="card-text">Search among all experiences</p>
-                            <a href="experiences.html"><i class="fa fa-arrow-circle-right fa-3x"></i></a>
+                            <a href="experiences.html"><i class="fa fa-arrow-circle-right fa-3x"></i><p class="d-none">Selected experience</p></a>
                         </div>
                     </div>
                 </div>
@@ -208,7 +208,7 @@
                         <div class="card-body">
                             <h5 class="card-title">TRIP PLANNING</h5>
                             <p class="card-text">Search among all experiences</p>
-                            <a href="trip.html"><i class="fa fa-arrow-circle-right fa-3x"></i></a>
+                            <a href="trip.html"><i class="fa fa-arrow-circle-right fa-3x"></i><p class="d-none">Selected trip</p></a>
                         </div>
                     </div>
                 </div>
@@ -218,7 +218,7 @@
                         <div class="card-body">
                             <h5 class="card-title">USERS</h5>
                             <p class="card-text">Search among all experiences</p>
-                            <a href="users.html"><i class="fa fa-arrow-circle-right fa-3x"></i></a>
+                            <a href="users.html"><i class="fa fa-arrow-circle-right fa-3x"></i><p class="d-none">Selected user</p></a>
                         </div>
                     </div>
                 </div>
@@ -234,11 +234,11 @@
             <!-- Section: Social media -->
             <section class="mb-5 mt-3">
                 <!-- Facebook -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa fa-facebook-f"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa fa-facebook-f"></i><p class="d-none">Facebook icon</p></a>
                 <!-- Twitter -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa fa-twitter"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa fa-twitter"></i><p class="d-none">Twitter icon</p></a>
                 <!-- Instagram -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa fa-instagram"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa fa-instagram"></i><p class="d-none">Instagram icon</p></a>
             </section>
 
             <!-- Section: Form -->
@@ -257,7 +257,7 @@
                             <!-- Email input -->
                             <div class="form-outline form-white mb-4">
                                 <input type="email" id="newsletter-form" class="form-control fs-5" placeholder="Email address"/>
-                                <label class="form-label" for="newsletter-form" ></label>
+                                <label class="form-label d-none" for="newsletter-form" >Newsletter subscription</label>
                             </div>
                         </div>
                         <!--Grid column-->
@@ -291,7 +291,7 @@
                     </div>
                     <!--Grid column-->
                     <div class="col-lg-4 col-md-4 mb-4 mb-md-0">
-                        <img src="images/logo.svg" width="97rem">
+                        <img src="images/logo.svg" alt="Travel Experience Logo" width="97rem">
                     </div>
                     <!--Grid column-->
                     <div class="col-lg-4 col-md-4 mb-4 mb-md-0">

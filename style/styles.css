@@ -393,6 +393,14 @@ input.valid, textarea.valid{
 	display: none;
 }
 
+.alert {
+	display: none;
+	width: 30%;
+	text-align: center;
+	margin: auto;
+	margin-bottom: 4rem;
+}
+
  /* TRIP PLANNING */
 .header-trip{
 	align-items: center;
